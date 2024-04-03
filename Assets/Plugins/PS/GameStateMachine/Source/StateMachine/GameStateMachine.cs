@@ -1,7 +1,4 @@
-using ModestTree;
-using PS.FSM.States;
-
-namespace PS.FSM
+namespace PS.GameStateMachine
 {
     public class GameStateMachine : IGameStateMachine
     {

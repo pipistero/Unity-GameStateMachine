@@ -1,6 +1,6 @@
 using Zenject;
 
-namespace PS.FSM
+namespace PS.GameStateMachine
 {
     public class GameStateMachineInstaller : MonoInstaller
     {
@@ -8,7 +8,6 @@ namespace PS.FSM
         {
             InstallGameStateFactory();
             InstallGameStateMachine();
-            InstallStates();
         }
 
         private void InstallGameStateFactory()
@@ -23,11 +22,6 @@ namespace PS.FSM
             Container
                 .BindInterfacesAndSelfTo<GameStateMachine>()
                 .AsSingle();
-        }
-        
-        private void InstallStates()
-        {
-            
         }
     }
 }

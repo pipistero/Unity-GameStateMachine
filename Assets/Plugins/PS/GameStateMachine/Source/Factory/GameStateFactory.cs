@@ -1,7 +1,6 @@
-using PS.FSM.States;
 using Zenject;
 
-namespace PS.FSM
+namespace PS.GameStateMachine
 {
     public class GameStateFactory : IGameStateFactory
     {

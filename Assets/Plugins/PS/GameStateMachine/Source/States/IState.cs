@@ -1,4 +1,4 @@
-namespace PS.FSM.States
+namespace PS.GameStateMachine
 {
     public interface IPayloadedState<in TPayload> : IExitableState
     {

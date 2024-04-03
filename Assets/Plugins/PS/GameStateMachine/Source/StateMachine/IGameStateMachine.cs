@@ -1,6 +1,4 @@
-using PS.FSM.States;
-
-namespace PS.FSM
+namespace PS.GameStateMachine
 {
     public interface IGameStateMachine
     {
