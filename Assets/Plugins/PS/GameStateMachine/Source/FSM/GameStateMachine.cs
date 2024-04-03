@@ -1,29 +1,43 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using PS.GameStateMachine.Source.States;
-using UnityEngine;
+using PS.FSM.States;
 
-namespace PS.GameStateMachine.Source.FSM
+namespace PS.FSM
 {
     public class GameStateMachine : IGameStateMachine
     {
-        private Dictionary<Type, IExitableState> _states;
-        private IState _activeState;
+        private readonly GameStateFactory _gameStateFactory;
+        
+        private IExitableState _activeState;
 
-        public GameStateMachine(IEnumerable<IExitableState> states)
+        public GameStateMachine(GameStateFactory gameStateFactory)
         {
-            Debug.Log(states.Count());
+            _gameStateFactory = gameStateFactory;
         }
         
         public void Enter<TState>() where TState : class, IState
         {
-            
+            var state = ChangeState<TState>();
+            state.Enter();
         }
 
         public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadedState<TPayload>
         {
-            
+            var state = ChangeState<TState>();
+            state.Enter(payload);
+        }
+
+        private TState ChangeState<TState>() where TState : class, IExitableState
+        {
+            _activeState?.Exit();
+
+            var state = GetState<TState>();
+            _activeState = state;
+
+            return state;
+        }
+        
+        private TState GetState<TState>() where TState : class, IExitableState
+        {
+            return _gameStateFactory.GetState<TState>();
         }
     }
 }
