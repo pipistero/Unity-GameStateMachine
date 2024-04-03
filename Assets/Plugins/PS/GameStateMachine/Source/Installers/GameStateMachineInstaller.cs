@@ -14,7 +14,7 @@ namespace PS.FSM
         private void InstallGameStateFactory()
         {
             Container
-                .Bind<GameStateFactory>()
+                .BindInterfacesAndSelfTo<GameStateFactory>()
                 .AsSingle();
         }
 
@@ -27,7 +27,7 @@ namespace PS.FSM
         
         private void InstallStates()
         {
-
+            
         }
     }
 }

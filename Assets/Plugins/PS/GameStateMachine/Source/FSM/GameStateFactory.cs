@@ -3,7 +3,7 @@ using Zenject;
 
 namespace PS.FSM
 {
-    public class GameStateFactory
+    public class GameStateFactory : IGameStateFactory
     {
         private readonly DiContainer _container;
 
@@ -14,7 +14,7 @@ namespace PS.FSM
 
         public TState GetState<TState>() where TState : class, IExitableState
         {
-            return _container.Instantiate<TState>();
+            return _container.Resolve<TState>();
         }
     }
 }

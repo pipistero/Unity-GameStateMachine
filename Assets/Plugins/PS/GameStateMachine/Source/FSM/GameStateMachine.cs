@@ -1,14 +1,15 @@
+using ModestTree;
 using PS.FSM.States;
 
 namespace PS.FSM
 {
     public class GameStateMachine : IGameStateMachine
     {
-        private readonly GameStateFactory _gameStateFactory;
+        private readonly IGameStateFactory _gameStateFactory;
         
         private IExitableState _activeState;
 
-        public GameStateMachine(GameStateFactory gameStateFactory)
+        public GameStateMachine(IGameStateFactory gameStateFactory)
         {
             _gameStateFactory = gameStateFactory;
         }
