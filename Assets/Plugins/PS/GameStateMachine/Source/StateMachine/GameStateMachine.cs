@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace PS.GameStateMachine
 {
     public class GameStateMachine : IGameStateMachine
